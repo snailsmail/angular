@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="test_ajax">
+<head>
+  <meta charset="UTF-8">
+  <title>test_ajax</title>
+  <script src="angular.js"></script>
+  <script>
+
+    let mod = angular.module("test_ajax", []);
+
+    mod.controller("main", function ($scope, $timeout, $interval) {
+
+      $scope.a = 0;
+      $scope.b = 0;
+
+      $interval(function () {
+        $scope.a ++;
+      }, 1000);
+
+      $timeout(function () {
+        $scope.b ++;
+      }, 1000);
+    });
+
+  </script>
+</head>
+<body ng-controller="main">
+  秒针: {{a}}
+  <br/>
+  b: {{b}}
+</body>
+</html>

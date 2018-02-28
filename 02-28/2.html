@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="test_ajax">
+<head>
+  <meta charset="UTF-8">
+  <title>test_ajax</title>
+  <script src="angular.js"></script>
+  <script src="jquery.js"></script>
+  <script>
+
+    let mod = angular.module("test_ajax", []);
+
+    mod.controller("main", function ($scope) {
+
+      $.ajax({
+        url: 'arr.text',
+        dataType: 'json',
+        success(res) {
+          $scope.arr = res;
+          $scope.$apply();
+        },
+        err() {
+          alert('出错了')
+        }
+      });
+    });
+
+  </script>
+</head>
+<body ng-controller="main">
+  <ul>
+    <li ng-repeat="a in arr track by $index">{{a}}</li>
+  </ul>
+</body>
+</html>

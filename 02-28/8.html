@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="test">
+<head>
+  <meta charset="UTF-8">
+  <title>test_ajax</title>
+  <script src="angular.js"></script>
+  <script>
+
+    let mod = angular.module("test", []);
+
+    mod.controller("main", function ($scope, $http) {
+      Promise.all([
+        $http.get('1.text'),
+        $http.get('2.text'),
+        $http.get('3.text'),
+      ]).then(arr => {
+        let data1 = arr[0].data;
+        let data2 = arr[1].data;
+        let data3 = arr[2].data;
+
+        console.log(data1, data2, data3);
+      }, () => {
+        alert("错了")
+      });
+    });
+
+  </script>
+</head>
+<body ng-controller="main">
+
+</body>
+</html>

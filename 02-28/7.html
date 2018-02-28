@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="test">
+<head>
+  <meta charset="UTF-8">
+  <title>test_ajax</title>
+  <script src="angular.js"></script>
+  <script>
+
+    let mod = angular.module("test", []);
+
+    mod.controller("main", function ($scope, $http) {
+      $http.get('1.text').then(res => {
+        let data1 = res.data;
+
+        $http.get('2.text').then(res => {
+          let data2 = res.data;
+
+          $http.get('3.text').then(res => {
+            let data3 = res.data;
+
+            console.log(data1, data2, data3);
+          }, () => {
+            alert("失败");
+          });
+        }, () => {
+          alert("失败");
+        });
+      }, () => {
+        alert("失败");
+      });
+    });
+
+  </script>
+</head>
+<body ng-controller="main">
+
+</body>
+</html>

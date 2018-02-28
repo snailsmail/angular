@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>test_ajax</title>
+  <script src="jquery.js"></script>
+  <script>
+
+    //请求1.text， 2.text， 3.text 存在回调地狱
+    $.ajax({
+      url: '1.text',
+      dataType: 'json',
+      success (data1) {
+        $.ajax({
+          url: '2.text',
+          dataType: 'json',
+          success (data2) {
+            $.ajax({
+              url: '3.text',
+              dataType: 'json',
+              success (data3) {
+                console.log(data1, data2, data3);
+              },
+              error () {
+                alert("错了")
+              }
+            });
+          },
+          error () {
+            alert("错了")
+          }
+        });
+      },
+      error () {
+        alert("错了")
+      }
+    });
+  </script>
+</head>
+<body>
+
+</body>
+</html>

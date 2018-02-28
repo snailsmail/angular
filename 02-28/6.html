@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>test_ajax</title>
+  <script src="jquery.js"></script>
+  <script>
+
+    Promise.all([
+        $.ajax({url: '1.text', dataType: 'json'}),
+        $.ajax({url: '2.text', dataType: 'json'}),
+        $.ajax({url: '3.text', dataType: 'json'}),
+    ]).then(arr => {
+
+      let [data1, data2, data3] = arr;
+
+      console.log(arr);
+      console.log(data1, data2, data3);
+    }, () => {
+      alert("错了")
+    });
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>
