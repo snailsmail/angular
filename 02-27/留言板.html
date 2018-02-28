@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="angular.js"></script>
+</head>
+<body ng-init="arr=[{name: 'aaa', content: '大家好'}, {name: 'bbb', content: '你好啊'}, {name: 'ccc', content: '你们好啊'}]">
+
+<input type="text" value="" ng-model="name"/>
+<input type="text" value="" ng-model="content"/>
+
+<input value="提交" type="button" ng-click="arr.push({name: name, content: content})"/>
+  <ul>
+    <li ng-repeat="item in arr">{{item.name}} 的留言是：{{item.content}}</li>
+  </ul>
+</body>
+</html>

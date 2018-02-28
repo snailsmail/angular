@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="angular.js"></script>
+</head>
+<body ng-init="arr=[1,2,3,2]">
+<ul>
+  <li ng-repeat="(index, val) in arr track by $index">{{index}}, {{val}}</li>
+</ul>
+</body>
+</html>
