@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="">
+<head>
+  <meta charset="UTF-8">
+  <title>见面就掐</title>
+  <script src="angular-1.6.9.js"></script>
+</head>
+<body ng-init="a=0;arr=[1,2,3]">
+  <!--
+    ng-click和ng-repeat和赋值不能放在一起
+   -->
+  <input type="button" value="按钮" ng-click="a=12" ng-repeat="item in arr"/>{{a}}
+</body>
+</html>

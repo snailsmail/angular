@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="test">
+<head>
+  <meta charset="UTF-8">
+  <title>html</title>
+  <script src="angular-1.6.9.js"></script>
+  <script>
+    let mod = angular.module("test", []);
+
+    mod.controller("main", function ($scope) {
+
+      $scope.a = '我是<strong>XXX</strong>, 我来自<a href="http://www.baidu.com">XXX</a>';
+    });
+  </script>
+</head>
+<body ng-controller="main">
+  {{a}}
+</body>
+</html>

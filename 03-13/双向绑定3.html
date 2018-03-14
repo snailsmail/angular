@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>双向绑定</title>
+  <script src="jquery.js"></script>
+  <script>
+    window.onload = function () {
+      let a = '';
+      let oTxt = document.getElementById('txt1');
+
+      function $interval(fn, time) {
+        setInterval(function () {
+          fn();
+
+          apply();
+        }, time);
+      }
+
+      function $http(url, success, error) {
+        $.ajax({
+          url,
+          dataType: 'json',
+          success(res) {
+            success(res);
+
+            apply();
+          },
+          error
+        });
+      }
+
+      //数据 -> input
+      function apply() {
+        oTxt.value = a;
+      }
+
+      // $.ajax({
+      //   url: '1.text',
+      //   dataType: 'json',
+      //   success(res) {
+      //     alert(res);
+      //   },
+      //   error() {
+      //     alert("错了");
+      //   }
+      // });
+
+      $http('1.text', function (res) {
+        a = res;
+      }, function () {
+        alert("错了");
+      });
+
+      //input -> 数据
+    }
+  </script>
+</head>
+<body>
+  <input type="text" id="txt1"/>
+</body>
+</html>

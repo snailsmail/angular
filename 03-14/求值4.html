@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>求值</title>
+  <script>
+
+    let $scope = {a: 5, b: 12};
+    let str = 'a*b';
+
+    for (let name in $scope) {
+      str = str.replace(new RegExp(name, 'g'), `$scope.${name}`)
+    }
+
+    alert(eval(str));
+
+  </script>
+</head>
+<body>
+</body>
+</html>

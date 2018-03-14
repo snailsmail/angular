@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="">
+<head>
+  <meta charset="UTF-8">
+  <title>过滤器</title>
+  <script src="angular-1.6.9.js"></script>
+</head>
+<body ng-init="arr=[{title: 'ccdd女装', price: 78, time: 1520996956259},{title: 'ccdd男装', price: 38, time: 1520906956259},{title: 'ccdd童装', price: 18, time: 1514996956259}]">
+  <ul>
+    <li ng-repeat="item in arr">
+      <h4>{{item.title}}</h4>
+      <span>{{item.price|currency:"￥"}}</span>
+      <em>{{item.time|date:"y年MM月dd日 HH:mm:ss"}}</em>
+    </li>
+  </ul>
+
+</body>
+</html>

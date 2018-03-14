@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="test">
+<head>
+  <meta charset="UTF-8">
+  <title>jsonp</title>
+  <script src="angular-1.5.8.js"></script>
+  <script>
+    let mod = angular.module('test', []);
+
+    mod.controller('main', function ($scope, $http) {
+      $http.jsonp(`https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=a&cb=JSON_CALLBACK`).then(res => {
+        alert(res.data.s);
+      }, () => {
+        alert('错了');
+      })
+    });
+  </script>
+</head>
+<body ng-controller="main">
+
+</body>
+</html>

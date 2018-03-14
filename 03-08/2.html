@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="test">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="angular-1.6.9.js"></script>
+  <script>
+    let mod_a = angular.module('a', []);
+
+    mod_a.controller('test_a', function ($scope) {
+      $scope.a = 12;
+    });
+
+    let mod_b = angular.module('b', []);
+
+    mod_b.controller('test_b', function ($scope) {
+      $scope.b = 5;
+    });
+
+    let mod = angular.module('test', ['a', 'b']);
+
+
+    //angular的模块化
+    //模块依赖，父模块的一切东西，都会复制到子模块
+
+  </script>
+</head>
+<body ng-controller="test_a">
+{{a}}
+</body>
+</html>

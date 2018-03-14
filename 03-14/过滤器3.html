@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="test">
+<head>
+  <meta charset="UTF-8">
+  <title>自定义过滤器</title>
+  <script src="angular-1.6.9.js"></script>
+  <script>
+    let mod = angular.module('test', []);
+
+    mod.filter('hideTelNum', function () {
+      return function (input, arg) {
+
+        return input.substring(0, 3) + '****' + input.substring(7);
+      }
+    });
+  </script>
+</head>
+<body ng-init="arr=[{name: '张三', tel: '13599994343'}, {name: '张二', tel: '18899995376'}, {name: '张六', tel: '13399994123'}, {name: '张四', tel: '13599394333'}]">
+  <ul>
+    <li ng-repeat="item in arr">
+      <h4>{{item.name}}</h4>
+      <span>{{item.tel|hideTelNum}}</span>
+    </li>
+  </ul>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>双向绑定</title>
+  <script>
+    window.onload = function () {
+      let a = '';
+      let oTxt = document.getElementById('txt1');
+
+      //数据 -> input
+      function apply() {
+        oTxt.value = a;
+      }
+
+      setInterval(function () {
+        a+='|';
+
+        apply();
+      }, 100);
+
+      //input -> 数据
+    }
+  </script>
+</head>
+<body>
+  <input type="text" id="txt1"/>
+</body>
+</html>

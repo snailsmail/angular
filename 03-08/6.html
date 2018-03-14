@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="test">
+<head>
+  <meta charset="UTF-8">
+  <title>jsonp</title>
+  <script src="angular-1.6.9.js"></script>
+  <script>
+    //这个angular是1.6.9
+    let mod = angular.module('test', []);
+
+    mod.controller('main', function ($scope, $http, $sce) {
+
+      $scope.arr = [];
+      $scope.word = '';
+
+      $scope.$watch('word', function () {
+
+        let res = $sce.trustAsResourceUrl(`https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=${$scope.word}`);
+        $http.jsonp(res, {jsonpCallbackParam: 'cb'}).then(res => {
+          console.log(res.data);
+          // alert(res.data.s);
+          $scope.arr = res.data.s;
+        }, () => {
+          alert('错了');
+        });
+      });
+    });
+
+    //1.6.4之前
+      //$http.jsonp('xxx?cb=JSON_CALLBACK').then();
+
+    //1.6.4之后
+      //let res = $sce.trustAsResourceUrl('xxx);
+      //$http.jsonp(res, {jsonpCallbackParam: 'cb'}).then();
+  </script>
+</head>
+<body ng-controller="main">
+  <input type="text" ng-model="word">
+
+  <ul>
+    <li ng-repeat="str in arr">{{str}}</li>
+  </ul>
+</body>
+</html>

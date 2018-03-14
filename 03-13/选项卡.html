@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="text">
+<head>
+  <meta charset="UTF-8">
+  <title>选项卡</title>
+  <style>
+    body input {
+      background-color: #ccc;
+    }
+    body input.active {
+      background-color: yellow;
+    }
+    body div {
+      background-color: #cccccc;
+      width: 200px;
+      height: 200px;
+      display: none;
+    }
+    body div.cur {
+      display: block;
+    }
+
+  </style>
+  <script src="angular-1.6.9.js"></script>
+  <script>
+    let mod = angular.module('text', []);
+
+    mod.controller('main', function ($scope) {
+      $scope.now = 0;
+
+      $scope.items = {
+        '按钮1': 'sdagsadfs',
+        '按钮2': '234321412',
+        '按钮3': 'sadfer234'
+      };
+
+      $scope.showNow = function (num) {
+        $scope.now = num;
+      }
+    });
+  </script>
+</head>
+<body ng-controller="main">
+  <input type="button" ng-repeat="(k, v) in items" value="{{k}}"
+         class="{{$index==now ? 'active' : ''}}" ng-click="showNow($index)"/>
+  <div ng-repeat="v in items" class="{{$index==now ? 'cur' : ''}}">{{v}}</div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="test">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="angular-1.6.9.js"></script>
+  <script>
+
+    let mod = angular.module('test', []);
+
+    mod.config(function ($httpProvider) {
+      $httpProvider.defaults.transformRequest = function (obj) {
+        let arr = [];
+
+        for (let name in obj) {
+          arr.push(`${encodeURIComponent(name)}=${encodeURIComponent(obj[name])}`);
+        }
+
+        return arr.join('&');
+      };
+
+      $httpProvider.defaults.headers.post['Content-Type']='application/x-www-form-urlencoded';
+
+    });
+
+    mod.controller("main", function ($http) {
+      $http({
+        url: '1.php',
+        method: 'post',
+        data: {
+          a: 12,
+          b: 5
+        }
+      }).then(res => {
+        alert(res.data);
+      },
+      () => {
+        alert('错了');
+      });
+    });
+
+    //angular的post请求的contentType是application/json格式，大多服务器不支持，需要配置改成a=12&b=5的格式,需要$httpProvider工厂
+    //urlEncoding url编码，将不适合在url中出现的字符进行转化
+  </script>
+</head>
+<body ng-controller="test">
+
+</body>
+</html>

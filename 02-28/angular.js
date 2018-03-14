@@ -1666,8 +1666,8 @@ function allowAutoBootstrap(document) {
       // Same-origin resources are always allowed, even for non-whitelisted schemes.
       return true;
     }
-    // Disabled bootstrapping unless angular.js was loaded from a known scheme used on the web.
-    // This is to prevent angular.js bundled with browser extensions from being used to bypass the
+    // Disabled bootstrapping unless angular-1.5.8.js was loaded from a known scheme used on the web.
+    // This is to prevent angular-1.5.8.js bundled with browser extensions from being used to bypass the
     // content security policy in web pages and other browser extensions.
     switch (link.protocol) {
       case 'http:':
@@ -1896,7 +1896,7 @@ function angularInit(element, bootstrap) {
  *   {{greeting}}
  * </div>
  *
- * <script src="angular.js"></script>
+ * <script src="angular-1.5.8.js"></script>
  * <script>
  *   var app = angular.module('demo', [])
  *   .controller('WelcomeController', function($scope) {
@@ -2987,7 +2987,7 @@ function publishExternalAPI(angular) {
  * AngularJS to manipulate the DOM in a cross-browser compatible way. jqLite implements only the most
  * commonly needed functionality with the goal of having a very small footprint.
  *
- * To use `jQuery`, simply ensure it is loaded before the `angular.js` file. You can also use the
+ * To use `jQuery`, simply ensure it is loaded before the `angular-1.5.8.js` file. You can also use the
  * {@link ngJq `ngJq`} directive to specify that jqlite should be used over jQuery, or to use a
  * specific version of jQuery if multiple versions exist on the page.
  *

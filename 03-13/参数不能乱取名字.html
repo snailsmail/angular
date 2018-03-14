@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="test">
+<head>
+  <meta charset="UTF-8">
+  <title>依赖注入</title>
+  <script src="angular-1.6.9.js"></script>
+  <script>
+
+    let mod = angular.module("test", []);
+
+    mod.controller("main", function ($scope2) {
+      $scope2.a = 12;
+    });
+  </script>
+</head>
+<body ng-controller="main">
+{{a}}
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>依赖注入</title>
+  <script>
+   let providers = {
+     '$scope': 12,
+     '$http': 5,
+     '$interval': 88
+   }
+
+   function show($scope, $http) {
+      alert($scope);
+      alert($http);
+   }
+
+   //angular内部
+   {
+     var str = show.toString().split('{')[0];
+     str = str.split('(')[1].replace(')', '');
+     let args = str.split(',').map(s => s.trim());
+
+     let values = [];
+     for (let i = 0; i < args.length; i++) {
+       values.push(providers[args[i]]);
+     }
+
+     show.apply(null, values);
+   }
+  </script>
+</head>
+<body>
+  <input type="text" id="txt1"/>
+</body>
+</html>
